@@ -39,12 +39,9 @@ namespace Chat_api_desktop
             }
             ultimoMensaje = long.Parse(ultimoMSN);
 
-            //DateTime foo = DateTime.UtcNow;
-            //DateTime foo2 = DateTime.UtcNow.Date;
-            //long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
-            //long unixTime2 = ((DateTimeOffset)foo2).ToUnixTimeSeconds();
-            //MessageBox.Show($"{unixTime2.ToString()} {unixTime.ToString()}");
-            //await UltimoInsertado("789");
+            var factura = await FacturaAsync("Movistar _ Recaudo");
+            var j = "sd";
+
             //timer1.Interval = 2000;
             //timer1.Start();
         }
@@ -52,14 +49,14 @@ namespace Chat_api_desktop
 
         private async void btnAdjuntar_Click(object sender, EventArgs e)
         {
-            var numero = await RecuperarInsertado();
-            if (!string.IsNullOrEmpty(numero))
-                ultimoMensaje = long.Parse(numero);
+            //var numero = await RecuperarInsertado();
+            //if (!string.IsNullOrEmpty(numero))
+            //    ultimoMensaje = long.Parse(numero);
 
             string docu = @"C:\Users\JOSELO\Downloads\soi octubre.pdf";
             string ruta = docu;
             string extension;
-            extension = Path.GetExtension(ruta).Replace(".","");
+            extension = Path.GetExtension(ruta).Replace(".", "");
             MessageBox.Show(extension);
             byte[] archivo = System.IO.File.ReadAllBytes(ruta);
             string base64 = Convert.ToBase64String(archivo);
@@ -102,11 +99,79 @@ namespace Chat_api_desktop
         }
         long ultimoMensaje = 100;
 
+        List<string> AllFiles = new List<string>();
+        void ParsePath(string path)
+        {
+
+
+
+        }
+
+        async Task<string> FacturaAsync(string nombre)
+        {
+
+            //string[] Lista = Directory.GetFiles().Select(f => System.IO.Path.GetFileName(f)).ToList();
+            string rutaFactura="";
+            string docu = @"C:\Users\JOSELO\Downloads";
+            DirectoryInfo directory = new DirectoryInfo(docu);
+            FileInfo[] files = directory.GetFiles();
+            foreach (var item in files)
+            {
+                var nomb = item.Name.Split('.')[0];
+                if (nomb == nombre)
+                {
+                    rutaFactura = item.FullName;
+                    break;
+                }
+            }
+
+            if (string.IsNullOrEmpty(rutaFactura))
+                return "";
+
+            //string docu = @"C:\Users\JOSELO\Downloads\soi octubre.pdf";
+            string ruta = rutaFactura;
+            string extension;
+            extension = Path.GetExtension(ruta).Replace(".", "");
+            MessageBox.Show(extension);
+            byte[] archivo = System.IO.File.ReadAllBytes(ruta);
+            string base64 = Convert.ToBase64String(archivo);
+            var urlimg = $"data:application/{extension};base64,{base64}";
+            //MessageBox.Show(base64);
+
+            return urlimg;
+            //var MENSAJE = new List<Message> { new Message
+            //{
+            //     Body= urlimg,
+            //     ChatId="573184156945@c.us",
+            //} };
+
+            //var asower = new Answer();
+            //asower.Messages = MENSAJE;
+            //var url = "http://192.168.1.10:8080/enviararchivo";
+            //using (var client = new HttpClient())
+            //{
+            //    var serialice = JsonConvert.SerializeObject(asower);
+            //    client.BaseAddress = new Uri(url);
+            //    var content = new StringContent(serialice, Encoding.UTF8, "application/json");
+            //    var result = await client.PostAsync(url, content);
+
+            //    if (result.IsSuccessStatusCode)
+            //    {
+            //        var res = await result.Content.ReadAsStringAsync();
+            //        listBox2.Items.Add($"Mensaje agregado {res}");
+            //        var retor = JsonConvert.DeserializeObject<Respuesta>(res);
+            //        await UltimoInsertado(ultimoMensaje.ToString());
+            //        //MessageBox.Show(retor.queueNumber.ToString());
+            //    }
+            //}
+        }
+
         private async Task<string> RespuestaMenu(string opcion, string tel)
         {
             switch (opcion)
             {
                 case "1":
+
                     return "Debo de enviar la peticion";
                 case "2":
                     return "Debo de enviar la peticion";
