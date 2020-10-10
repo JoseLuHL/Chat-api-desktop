@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="chat_boot_whatsappModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="clie_id" />
+          </Key>
+          <Property Name="clie_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clie_idtipoidentificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="clie_identificacion" Type="nvarchar" MaxLength="10" />
+          <Property Name="clie_nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="clie_apellidos" Type="nvarchar" MaxLength="50" />
+          <Property Name="clie_direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="clie_idsexo" Type="nvarchar" MaxLength="50" />
+          <Property Name="clie_telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="clie_barrio" Type="nvarchar" MaxLength="50" />
+          <Property Name="clie_codigo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idcliente" Type="int" />
+          <Property Name="fechaenvio" Type="date" />
+          <Property Name="estdo" Type="bit" />
+          <Property Name="numerofactura" Type="nvarchar" MaxLength="50" />
+          <Property Name="valorpagar" Type="nvarchar" MaxLength="50" />
+          <Property Name="enviadafecha" Type="date" />
+          <Property Name="linkpago" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_Facturas_cliente">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="clie_id" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="chat_boot_whatsappModelStoreContainer">
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Facturas_cliente" Association="Self.FK_Facturas_cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="chat_boot_whatsappModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="chat_boot_whatsappEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cliente" EntityType="chat_boot_whatsappModel.cliente" />
+          <EntitySet Name="Facturas" EntityType="chat_boot_whatsappModel.Facturas" />
+          <AssociationSet Name="FK_Facturas_cliente" Association="chat_boot_whatsappModel.FK_Facturas_cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="clie_id" />
+          </Key>
+          <Property Name="clie_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clie_idtipoidentificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="clie_identificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="clie_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="clie_apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="clie_direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="clie_idsexo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="clie_telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="clie_barrio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="clie_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Facturas" Relationship="chat_boot_whatsappModel.FK_Facturas_cliente" FromRole="cliente" ToRole="Facturas" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idcliente" Type="Int32" />
+          <Property Name="fechaenvio" Type="DateTime" Precision="0" />
+          <Property Name="estdo" Type="Boolean" />
+          <Property Name="numerofactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="valorpagar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="enviadafecha" Type="DateTime" Precision="0" />
+          <Property Name="linkpago" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cliente" Relationship="chat_boot_whatsappModel.FK_Facturas_cliente" FromRole="Facturas" ToRole="cliente" />
+        </EntityType>
+        <Association Name="FK_Facturas_cliente">
+          <End Type="chat_boot_whatsappModel.cliente" Role="cliente" Multiplicity="0..1" />
+          <End Type="chat_boot_whatsappModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="clie_id" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="idcliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="chat_boot_whatsappModelStoreContainer" CdmEntityContainer="chat_boot_whatsappEntities">
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="chat_boot_whatsappModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="clie_codigo" ColumnName="clie_codigo" />
+                <ScalarProperty Name="clie_barrio" ColumnName="clie_barrio" />
+                <ScalarProperty Name="clie_telefono" ColumnName="clie_telefono" />
+                <ScalarProperty Name="clie_idsexo" ColumnName="clie_idsexo" />
+                <ScalarProperty Name="clie_direccion" ColumnName="clie_direccion" />
+                <ScalarProperty Name="clie_apellidos" ColumnName="clie_apellidos" />
+                <ScalarProperty Name="clie_nombre" ColumnName="clie_nombre" />
+                <ScalarProperty Name="clie_identificacion" ColumnName="clie_identificacion" />
+                <ScalarProperty Name="clie_idtipoidentificacion" ColumnName="clie_idtipoidentificacion" />
+                <ScalarProperty Name="clie_id" ColumnName="clie_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="chat_boot_whatsappModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="linkpago" ColumnName="linkpago" />
+                <ScalarProperty Name="enviadafecha" ColumnName="enviadafecha" />
+                <ScalarProperty Name="valorpagar" ColumnName="valorpagar" />
+                <ScalarProperty Name="numerofactura" ColumnName="numerofactura" />
+                <ScalarProperty Name="estdo" ColumnName="estdo" />
+                <ScalarProperty Name="fechaenvio" ColumnName="fechaenvio" />
+                <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

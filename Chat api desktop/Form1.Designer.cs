@@ -43,13 +43,12 @@
             // 
             this.listBox1.BackColor = System.Drawing.SystemColors.Desktop;
             this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(12, 56);
+            this.listBox1.Location = new System.Drawing.Point(12, 161);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(177, 462);
+            this.listBox1.Size = new System.Drawing.Size(316, 340);
             this.listBox1.TabIndex = 0;
             // 
             // btnAdjuntar
@@ -59,9 +58,9 @@
             this.btnAdjuntar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAdjuntar.Location = new System.Drawing.Point(12, 10);
+            this.btnAdjuntar.Location = new System.Drawing.Point(12, 8);
             this.btnAdjuntar.Name = "btnAdjuntar";
-            this.btnAdjuntar.Size = new System.Drawing.Size(285, 38);
+            this.btnAdjuntar.Size = new System.Drawing.Size(274, 38);
             this.btnAdjuntar.TabIndex = 1;
             this.btnAdjuntar.Text = "Adjuntar";
             this.btnAdjuntar.UseVisualStyleBackColor = false;
@@ -92,21 +91,20 @@
             this.listBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(195, 56);
+            this.listBox2.Location = new System.Drawing.Point(334, 161);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(1143, 498);
+            this.listBox2.Size = new System.Drawing.Size(1042, 386);
             this.listBox2.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Desktop;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(334, 10);
+            this.label2.Location = new System.Drawing.Point(12, 56);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(166, 25);
+            this.label2.Size = new System.Drawing.Size(1326, 102);
             this.label2.TabIndex = 4;
             this.label2.Text = "Ultimas facturas";
             // 
@@ -119,7 +117,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(1350, 607);
+            this.ClientSize = new System.Drawing.Size(1380, 612);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label1);
