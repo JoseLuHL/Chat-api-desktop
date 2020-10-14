@@ -32,6 +32,7 @@ namespace Chat_api_desktop
                                                         "2. Descargar recibo de pago\n" +
                                                         "3. Estado del pago\n" +
                                                         "4. Registrar una solicitud\n" +
+                                                        "4. Como retornar una evidencia\n" +
                                                         "*. Consultar un inmueble (ingresa el codigo)\n" +
                                                         "5. Información de la inmoviliaria";
 
@@ -51,15 +52,19 @@ namespace Chat_api_desktop
                     var facuraPDF = await FacturaAsync(item.cliente.clie_codigo);
                     if (!string.IsNullOrEmpty(facuraPDF))
                     {
-                        string cel = $"57{item.cliente.clie_telefono}@c.us";
-                        var enviar = await EnviarFactura(facuraPDF, cel);
-                        mensajes.Add(new Message
+                        if (item.estdo == false)
                         {
-                            Body = $"Link de pago {item.linkpago}\n" +
-                            $"si desea puede pagar a traves de este link o con su pdf. No olvide de retonar la evidencia ¡FELIZ DÍA!",
-                            ChatId = cel,
-                            FromMe = false
-                        });
+                            string cel = $"57{item.cliente.clie_telefono}@c.us";
+                            mensajes.Add(new Message
+                            {
+                                Body = $"{item.cliente.clie_nombre } Link de pago {item.linkpago}\n" +
+                                $"si desea puede pagar a traves de este link o con su pdf. No olvide de retonar la evidencia ¡FELIZ DÍA!",
+                                ChatId = cel,
+                                FromMe = false
+                            });
+                            var enviar = await EnviarFactura(facuraPDF, cel);
+                        }
+                        //chat_Boot.Facturas.
                     }
                 }
 
