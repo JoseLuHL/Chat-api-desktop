@@ -17,24 +17,42 @@ namespace Chat_api_desktop
 {
     public partial class Form1 : Form
     {
+        string emcabezadoInicio = "Hola 👋 \n\n" +
+                          "Soy Guía Bot 🤖, tu asistente virtual disponible para ayudarte las 24 horas del día ⏰. \n\n" +
+                          "¿En qué puedo ayudarte hoy? \n\n" +
+                          "** Elige tu opción ingresando el número(Sólo dígitos) \n\n ";
+
+        string OpcionInvalida = "🤓 Lo siento, no tengo una respuesta a lo que escribes. \n\n" +
+                               "Estas opciones podrían ayudarte o escríbeme lo que necesitas: \n\n" +
+                               "**Elige tu opción ingresando el número(Sólo dígitos) \n\n";
         public Form1()
         {
             InitializeComponent();
             chat_Boot = new chat_boot_whatsappEntities();
-        }
-        private static readonly string welcomeMessageInicio = "Bot's menu: \n" +
-                                                "5. Información de la inmoviliaria \n" +
-                                                "*. Consultar un inmueble (ingresa el codigo)\n" +
-                                                "7. Inmuebles disponibles";
 
-        private static readonly string welcomeMessage = "Bot's menu: \n" +
-                                                        "1. Información de inmueble disponible\n" +
-                                                        "2. Descargar recibo de pago\n" +
-                                                        "3. Estado del pago\n" +
-                                                        "4. Registrar una solicitud\n" +
-                                                        "4. Como retornar una evidencia\n" +
-                                                        "*. Consultar un inmueble (ingresa el codigo)\n" +
-                                                        "5. Información de la inmoviliaria";
+
+            welcomeMessageInicio = 
+                                   "5. Información de la inmoviliaria \n" +
+                                   "*. Consultar un inmueble (ingresa el codigo)\n" +
+                                   "7. Inmuebles disponibles";
+
+            welcomeMessage = 
+                             "1. Información de inmueble disponible\n" +
+                             "2. Descargar recibo de pago\n" +
+                             "3. Estado del pago\n" +
+                             "4. Registrar una solicitud\n" +
+                             "4. Como retornar una evidencia\n" +
+                             "*. Consultar un inmueble (ingresa el codigo)\n" +
+                             "5. Información de la inmoviliaria";
+        }
+
+
+
+        private string welcomeMessageInicio;
+
+
+
+        private string welcomeMessage;
 
         chat_boot_whatsappEntities chat_Boot;
         DateTime fecha;
